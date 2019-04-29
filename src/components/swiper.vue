@@ -1,11 +1,9 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption">
-            <!-- slides -->
+        <swiper :options="swiperOption" v-if="swiperList.length">
             <swiper-slide v-for="item of swiperList" :key="item.id">
                 <img class="swiper-img" :src="item.imgUrl" alt="">
             </swiper-slide>
-            <!-- Optional controls -->
             <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
     </div>
@@ -19,7 +17,10 @@ export default {
             swiperOption: {
                 pagination: '.swiper-pagination',
                 // 让插件支持循环轮播
-                loop: true
+                loop: true,
+                // 自动轮播
+                autoplay:true,
+                speed: 900,  // 切换图片速度
             },
             swiperList:[
                 { 
